@@ -1,0 +1,147 @@
+{
+    "name": "alphaskills",
+    "version": "0.2.0",
+    "description": "18 Claude Code skills for institutional-grade financial, biotech, legal, and research intelligence. SEC insider trades, hedge fund holdings, activist campaigns, clinical trials, stock signals, futures positioning, arXiv + PubMed + bioRxiv papers, NIH grants, FDA drug recalls, Federal Register, CourtListener dockets, GitHub repo intel, SEC S-1 IPO tracker, vehicle recalls, and more. All skills use free public US government APIs. No key required for most.",
+    "author": {
+        "name": "Mohye24k",
+        "url": "https://github.com/Mohye24k"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/Mohye24k/alphaskills",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Mohye24k/alphaskills.git"
+    },
+    "keywords": [
+        "sec",
+        "finance",
+        "bloomberg-alternative",
+        "biotech",
+        "pharma",
+        "clinical-trials",
+        "insider-trading",
+        "hedge-funds",
+        "activist-investing",
+        "federal-register",
+        "nih-grants",
+        "arxiv",
+        "pubmed",
+        "biorxiv",
+        "courtlistener",
+        "github-intelligence",
+        "fred-economic-data",
+        "cftc",
+        "nhtsa",
+        "ipo-tracker"
+    ],
+    "skills": [
+        {
+            "name": "sec-insider-scan",
+            "path": "skills/sec-insider-scan/SKILL.md",
+            "category": "finance",
+            "description": "Form 4 insider trading analysis by ticker"
+        },
+        {
+            "name": "hedge-fund-holdings",
+            "path": "skills/hedge-fund-holdings/SKILL.md",
+            "category": "finance",
+            "description": "13F quarterly institutional holdings by fund"
+        },
+        {
+            "name": "activist-campaign-tracker",
+            "path": "skills/activist-campaign-tracker/SKILL.md",
+            "category": "finance",
+            "description": "13D/G activist investor filings"
+        },
+        {
+            "name": "clinical-trial-intel",
+            "path": "skills/clinical-trial-intel/SKILL.md",
+            "category": "biotech",
+            "description": "ClinicalTrials.gov pipeline intel by condition/drug/sponsor"
+        },
+        {
+            "name": "stock-signal-report",
+            "path": "skills/stock-signal-report/SKILL.md",
+            "category": "finance",
+            "description": "Unified bull/bear SEC signal per ticker"
+        },
+        {
+            "name": "futures-positioning-check",
+            "path": "skills/futures-positioning-check/SKILL.md",
+            "category": "macro",
+            "description": "CFTC Commitment of Traders weekly positioning"
+        },
+        {
+            "name": "arxiv-paper-scan",
+            "path": "skills/arxiv-paper-scan/SKILL.md",
+            "category": "research",
+            "description": "arXiv preprint search + summarization"
+        },
+        {
+            "name": "nih-grant-scan",
+            "path": "skills/nih-grant-scan/SKILL.md",
+            "category": "biotech",
+            "description": "NIH RePORTER grant awards by agency/PI/field"
+        },
+        {
+            "name": "vehicle-recall-check",
+            "path": "skills/vehicle-recall-check/SKILL.md",
+            "category": "legal-consumer",
+            "description": "NHTSA vehicle recalls by make/model/year"
+        },
+        {
+            "name": "company-deepdive",
+            "path": "skills/company-deepdive/SKILL.md",
+            "category": "finance",
+            "description": "Master skill — full multi-source company dossier"
+        },
+        {
+            "name": "federal-register-tracker",
+            "path": "skills/federal-register-tracker/SKILL.md",
+            "category": "legal-regulatory",
+            "description": "US Federal Register daily rule + notice tracker"
+        },
+        {
+            "name": "fda-drug-recalls-faers",
+            "path": "skills/fda-drug-recalls-faers/SKILL.md",
+            "category": "biotech",
+            "description": "FDA drug recalls + FAERS adverse events"
+        },
+        {
+            "name": "fred-economic-data",
+            "path": "skills/fred-economic-data/SKILL.md",
+            "category": "macro",
+            "description": "Federal Reserve FRED macroeconomic time series"
+        },
+        {
+            "name": "courtlistener-docket-tracker",
+            "path": "skills/courtlistener-docket-tracker/SKILL.md",
+            "category": "legal-regulatory",
+            "description": "Federal court dockets via CourtListener / RECAP"
+        },
+        {
+            "name": "github-repo-intel",
+            "path": "skills/github-repo-intel/SKILL.md",
+            "category": "tech",
+            "description": "GitHub repo health + contributor + security analysis"
+        },
+        {
+            "name": "pubmed-paper-scan",
+            "path": "skills/pubmed-paper-scan/SKILL.md",
+            "category": "research",
+            "description": "PubMed peer-reviewed biomedical literature search"
+        },
+        {
+            "name": "biorxiv-preprint-scan",
+            "path": "skills/biorxiv-preprint-scan/SKILL.md",
+            "category": "research",
+            "description": "bioRxiv + medRxiv preprints (pre-peer-review)"
+        },
+        {
+            "name": "sec-s1-ipo-tracker",
+            "path": "skills/sec-s1-ipo-tracker/SKILL.md",
+            "category": "finance",
+            "description": "SEC S-1 / F-1 IPO filings + amendment velocity tracking"
+        }
+    ]
+}

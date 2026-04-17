@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alphaskills"
+version = "0.1.0"
+description = "Executable backbone for AlphaSkills — Python helpers for SEC EDGAR, NIH, ClinicalTrials.gov, FDA, CFTC, FRED, NHTSA, arXiv, PubMed, bioRxiv, Federal Register"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Mohye24k", email = "mohye24k@users.noreply.github.com" }]
+requires-python = ">=3.9"
+keywords = [
+    "sec",
+    "finance",
+    "bloomberg-alternative",
+    "biotech",
+    "clinical-trials",
+    "insider-trading",
+    "hedge-funds",
+    "activist-investing",
+    "claude-skills",
+    "agent-skills",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/Mohye24k/alphaskills"
+Repository = "https://github.com/Mohye24k/alphaskills.git"
+Issues = "https://github.com/Mohye24k/alphaskills/issues"
+
+[tool.setuptools.packages.find]
+include = ["alphaskills_py*"]
