@@ -1,9 +1,9 @@
-# AlphaSkills installer for Windows PowerShell
+# AlphaSkills installer for Windows PowerShell (5.1 and 7+ compatible)
 # Usage:
-#   .\install.ps1                # installs to %USERPROFILE%\.claude\skills\
-#   .\install.ps1 -Codex         # installs to %USERPROFILE%\.codex\skills\ (Codex CLI mode)
+#   .\install.ps1                # installs to ~/.claude/skills/
+#   .\install.ps1 -Codex         # installs to ~/.codex/skills/
 #   .\install.ps1 -Both          # installs to both
-#   .\install.ps1 -Force         # overwrite existing skill symlinks
+#   .\install.ps1 -Force         # overwrite existing skill installs
 
 param(
     [switch]$Codex,
@@ -13,15 +13,13 @@ param(
 )
 
 if ($Help) {
-    Write-Host @"
-AlphaSkills installer
-
-Usage:
-  .\install.ps1          Install to ~/.claude/skills/ (Claude Code / Projects / Desktop)
-  .\install.ps1 -Codex   Install to ~/.codex/skills/ (OpenAI Codex CLI)
-  .\install.ps1 -Both    Install to both
-  .\install.ps1 -Force   Overwrite existing symlinks
-"@
+    Write-Host "AlphaSkills installer"
+    Write-Host ""
+    Write-Host "Usage:"
+    Write-Host "  .\install.ps1          Install to ~/.claude/skills/ (Claude Code / Projects / Desktop)"
+    Write-Host "  .\install.ps1 -Codex   Install to ~/.codex/skills/ (OpenAI Codex CLI)"
+    Write-Host "  .\install.ps1 -Both    Install to both"
+    Write-Host "  .\install.ps1 -Force   Overwrite existing symlinks"
     exit 0
 }
 
@@ -31,11 +29,10 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $skillsSrc = Join-Path $scriptDir "skills"
 
 if (-not (Test-Path $skillsSrc)) {
-    Write-Host "✗ Skills source not found: $skillsSrc" -ForegroundColor Red
+    Write-Host "[ERROR] Skills source not found: $skillsSrc" -ForegroundColor Red
     exit 1
 }
 
-# Mode flags
 $installClaude = -not $Codex
 $installCodex = $Codex -or $Both
 if ($Both) { $installClaude = $true }
@@ -45,6 +42,7 @@ function Install-Skills {
 
     if (-not (Test-Path $TargetDir)) {
         New-Item -ItemType Directory -Path $TargetDir -Force | Out-Null
+        Write-Host "  Created directory: $TargetDir" -ForegroundColor Gray
     }
 
     Write-Host "Installing to $TargetDir ($Label)..."
@@ -58,18 +56,23 @@ function Install-Skills {
             if ($Force) {
                 Remove-Item $dest -Recurse -Force
             } else {
-                Write-Host "  ↻ $name (already exists, use -Force to overwrite)"
+                Write-Host "  [SKIP] $name (already exists, use -Force to overwrite)"
                 continue
             }
         }
 
-        # Prefer symlink (requires admin on Win; falls back to copy)
+        $symlinkOk = $false
         try {
             New-Item -ItemType SymbolicLink -Path $dest -Target $skill.FullName -ErrorAction Stop | Out-Null
-            Write-Host "  ✓ $name (symlink)" -ForegroundColor Green
+            $symlinkOk = $true
+            Write-Host "  [OK] $name (symlink)" -ForegroundColor Green
         } catch {
+            $symlinkOk = $false
+        }
+
+        if (-not $symlinkOk) {
             Copy-Item -Path $skill.FullName -Destination $dest -Recurse
-            Write-Host "  ✓ $name (copy — no admin for symlink)" -ForegroundColor Yellow
+            Write-Host "  [OK] $name (copy - run PowerShell as admin to use symlinks instead)" -ForegroundColor Yellow
         }
     }
     Write-Host ""
@@ -91,3 +94,5 @@ Write-Host "Done. In any Claude chat, try:"
 Write-Host "  /skill stock-signal-report NVDA"
 Write-Host "  /skill company-deepdive MRNA"
 Write-Host "  /skill hedge-fund-holdings berkshire"
+Write-Host "  /skill patient-trial-navigator (for medical questions)"
+Write-Host "  /skill alphastack-life-navigator (the master router)"
